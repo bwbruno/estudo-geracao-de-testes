@@ -1,0 +1,3 @@
+[submodule "geradores/evosuite/src"]
+	path = geradores/evosuite/src
+	url = https://github.com/EvoSuite/evosuite

@@ -1,0 +1,31 @@
+services:
+  randoop:
+    container_name: randoop
+    build: 
+      context: ./geradores/randoop/src
+      dockerfile: Dockerfile.java8
+    user: "${UID}:${GID}"
+    working_dir: /randoop
+    entrypoint: /bin/bash
+    volumes:
+      - ./geradores/randoop/testes-gerados:/testes-gerados
+      - ./geradores/randoop/executar-randoop.sh:/executar-randoop.sh
+      - ./projeto/simplesrh:/simplesrh
+    env_file:
+      - .env.example
+    
+
+  evosuite:
+    container_name: evosuite
+    build: 
+      context: ./geradores/evosuite/src
+      dockerfile: Dockerfile.java8
+    user: "${UID}:${GID}"
+    working_dir: /evosuite
+    entrypoint: /bin/bash
+    volumes:
+      - ./geradores/evosuite/testes-gerados:/evosuite
+      - ./geradores/evosuite/executar-evosuite.sh:/executar-evosuite.sh
+      - ./projeto/simplesrh:/simplesrh
+    env_file:
+      - .env.example
