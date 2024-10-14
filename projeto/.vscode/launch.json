@@ -1,0 +1,78 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SimplesRH - Listar",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json --listar",  
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Bonus",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json calcular-bonus",
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Bonus Maria",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json calcular-bonus --nome Maria",
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Calcular Reajuste",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json calcular-reajuste -p 10",
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Calcular Reajuste Junior",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json calcular-reajuste --nome Junior --percentual 10",
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Reajustar Cargo Analista",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json reajustar-salarios -c analista -p 10",
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Adicionar",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json --adicionar Bruno,Desenvolvedor,1000",  
+        },
+        {
+            "type": "java",
+            "name": "SimplesRH - Remover",
+            "request": "launch",
+            "mainClass": "br.ufrn.simplesrh.SimplesRH",
+            "projectName": "simplesrh",
+            "args": "--json funcionarios.json --remover Bruno",  
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+    ]
+}

@@ -1,0 +1,2 @@
+br.ufrn.simplesrh.service.FuncionarioService
+br.ufrn.simplesrh.service.GestaoService

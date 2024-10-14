@@ -1,0 +1,61 @@
+[ {
+  "nome" : "Junior",
+  "cargo" : "Desenvolvedor",
+  "salario" : 1000.0,
+  "dataAdmissao" : [ 2024, 10, 13 ],
+  "pontosDesempenho" : 0
+}, {
+  "nome" : "Ana",
+  "cargo" : "Analista",
+  "salario" : 1320.0,
+  "dataAdmissao" : [ 2023, 6, 1 ],
+  "pontosDesempenho" : 80
+}, {
+  "nome" : "Carlos",
+  "cargo" : "Gerente",
+  "salario" : 3000.0,
+  "dataAdmissao" : [ 2022, 3, 15 ],
+  "pontosDesempenho" : 90
+}, {
+  "nome" : "Debora",
+  "cargo" : "Desenvolvedor",
+  "salario" : 1100.0,
+  "dataAdmissao" : [ 2023, 1, 20 ],
+  "pontosDesempenho" : 70
+}, {
+  "nome" : "Eduardo",
+  "cargo" : "Coordenador",
+  "salario" : 2500.0,
+  "dataAdmissao" : [ 2021, 11, 5 ],
+  "pontosDesempenho" : 85
+}, {
+  "nome" : "Fernanda",
+  "cargo" : "Desenvolvedor",
+  "salario" : 1300.0,
+  "dataAdmissao" : [ 2023, 7, 7 ],
+  "pontosDesempenho" : 65
+}, {
+  "nome" : "Gustavo",
+  "cargo" : "Analista",
+  "salario" : 1265.0,
+  "dataAdmissao" : [ 2022, 9, 30 ],
+  "pontosDesempenho" : 75
+}, {
+  "nome" : "Helena",
+  "cargo" : "Gerente",
+  "salario" : 3200.0,
+  "dataAdmissao" : [ 2021, 12, 18 ],
+  "pontosDesempenho" : 95
+}, {
+  "nome" : "Igor",
+  "cargo" : "Desenvolvedor",
+  "salario" : 1050.0,
+  "dataAdmissao" : [ 2024, 5, 10 ],
+  "pontosDesempenho" : 60
+}, {
+  "nome" : "Juliana",
+  "cargo" : "Analista",
+  "salario" : 1540.0,
+  "dataAdmissao" : [ 2022, 8, 25 ],
+  "pontosDesempenho" : 85
+} ]

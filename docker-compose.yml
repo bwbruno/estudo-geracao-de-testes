@@ -5,11 +5,16 @@ services:
       context: ./geradores/randoop/src
       dockerfile: Dockerfile.java8
     user: "${UID}:${GID}"
-    working_dir: /randoop
-    entrypoint: /bin/bash
+    working_dir: /testes-gerados
+    command: >
+      java -classpath .:/simplesrh/target/classes:/randoop/randoop-all-4.3.3.jar
+      randoop.main.Main gentests
+      --classlist=/classes.txt 
+      --time-limit=10
     volumes:
       - ./geradores/randoop/testes-gerados:/testes-gerados
       - ./geradores/randoop/executar-randoop.sh:/executar-randoop.sh
+      - ./geradores/randoop/classes.txt:/classes.txt
       - ./projeto/simplesrh:/simplesrh
     env_file:
       - .env.example
