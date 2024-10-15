@@ -9,8 +9,9 @@ services:
     command: >
       java -classpath .:/simplesrh/target/classes:/randoop/randoop-all-4.3.3.jar
       randoop.main.Main gentests
-      --classlist=/classes.txt 
+      --classlist=/classes.txt
       --time-limit=10
+      --junit-package-name=randoop1 
     volumes:
       - ./geradores/randoop/testes-gerados:/testes-gerados
       - ./geradores/randoop/executar-randoop.sh:/executar-randoop.sh
