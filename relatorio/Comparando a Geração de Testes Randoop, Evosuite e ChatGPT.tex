@@ -1,0 +1,275 @@
+\documentclass[10pt]{article}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{caption} 
+\usepackage{subcaption} % for subfigures
+\usepackage{geometry}
+\usepackage{tabu}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{inconsolata}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{mdframed}
+\usepackage{setspace}
+
+\usepackage[scaled]{helvet}
+
+\renewcommand\familydefault{\sfdefault}
+% \renewcommand{\thesubsection}{\alph{subsection})}
+
+\geometry{
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
+}
+
+\onehalfspacing
+
+\usetikzlibrary{arrows}
+
+\begin{document}
+
+
+\begin{figure}[!ht]
+    \centering
+    \subfloat{
+    \includegraphics[height=2.4cm]{brasao-ufrn.png}
+    \label{UFRN Logo}
+    }
+    \hspace{12.09cm}
+    \subfloat{
+    \includegraphics[height=2.2cm]{brasao-metropole.png}
+    \label{DCA Logo}
+    }
+    %\caption{}
+    \label{Logos}
+\end{figure}
+
+\vspace{-2.9cm}
+
+\begin{center}
+
+UNIVERSIDADE FEDERAL DO RIO GRANDE DO NORTE\\
+INSTITUTO METRÓPOLE DIGITAL\\
+\vspace{0.5cm}
+DIM0512 - TESTE DE SOFTWARE II
+\vspace{1.25cm}
+
+\Large Comparando a Geração de Testes Randoop, Evosuite e ChatGPT
+\vspace{0.25cm}
+
+\vspace{1cm}
+{\large{\bf Aluno: } Bruno Wagner Barbosa Rodrigues
+}
+\end{center}
+
+\vspace{0.5cm}
+
+\lstset{language=Java,
+        basicstyle=\ttfamily\small,
+        keywordstyle=\color{blue}\ttfamily,
+        stringstyle=\color{orange}\ttfamily,
+        commentstyle=\color{red}\ttfamily,
+        morecomment=[l][\color{orange}]{\#},
+        breaklines=true,
+        extendedchars=true, % Enables extended characters
+        literate=%
+            {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+            {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+            {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+            {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+            {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
+            {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+            {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+            {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1
+}
+
+\lstdefinestyle{Raw}{
+        basicstyle=\ttfamily\small,
+        keywordstyle=\color{blue}\ttfamily,
+        morekeywords={Teste, retorna},
+        stringstyle=\color{black}\ttfamily,
+        commentstyle=\color{red}\ttfamily,
+        morecomment=[l][\color{red}]{\#},
+        breaklines=true,
+        extendedchars=true, % Enables extended characters
+        literate=%
+            {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+            {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+            {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+            {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+            {ã}{{\~a}}1 {õ}{{\~o}}1 {Ã}{{\~A}}1 {Õ}{{\~O}}1
+            {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+            {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+            {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1
+}
+
+
+\fontsize{12}{12}\selectfont
+\section{Repositório Git}
+
+O código-fonte do projeto desenvolvido e analisado está disponível em:
+
+\begin{quote}
+\url{https://github.com/bwbruno/estudo-geracao-de-testes}
+\end{quote}
+
+\subsection{Estrutura de diretórios repositório}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+\begin{lstlisting}
+    .
+    |-- geradores
+    |   |-- evosuite
+    |   |-- randoop
+    |-- projeto
+    |   |-- simplesrh
+    |   |   |-- src
+    |   |   |   |-- main
+    |   |   |   |-- test-evosuite1
+    |   |   |   |-- test-evosuite2
+    |   |   |   |-- test-evosuite3
+    |   |   |   |-- test-randoop1
+    |   |   |   |-- test-randoop2
+    |   |   |   |-- test-randoop3
+    |   |   |-- target
+    |-- relatorio
+\end{lstlisting}
+\end{mdframed}
+
+\subsection{Projeto SimplesRH}
+
+O projeto SimplesRH é um programa de linha de comando simples onde é possível executar algumas operações a partir de uma lista de funcionários em formato JSON.
+
+\vspace{0.25cm}
+
+\break
+\subsubsection{Comandos}
+\begin{mdframed}[backgroundcolor=gray!10]
+\begin{lstlisting}[style=Raw]
+java -jar simplesrh.jar
+   --json funcionarios.json --listar
+   --json funcionarios.json calcular-bonus
+   --json funcionarios.json calcular-bonus --nome Maria
+   --json funcionarios.json calcular-reajuste --percentual 10
+   --json funcionarios.json calcular-reajuste --nome Junior --percentual 10
+   --json funcionarios.json reajustar-salarios --cargo analista --percentual 10
+   --json funcionarios.json --adicionar Bruno,Desenvolvedor,1000
+   --json funcionarios.json --remover Bruno
+\end{lstlisting}
+\end{mdframed}
+
+\subsubsection{Exemplo de uma lista de Funcionários}
+\begin{mdframed}[backgroundcolor=gray!10]
+\begin{lstlisting}[style=Raw]
+[
+    {
+        "nome" : "Junior",
+        "cargo" : "Desenvolvedor",
+        "salario" : 1000.0,
+        "dataAdmissao" : [ 2024, 10, 13 ],
+        "pontosDesempenho" : 0
+    },
+    {
+        "nome" : "Ana",
+        "cargo" : "Analista",
+        "salario" : 1320.0,
+        "dataAdmissao" : [ 2023, 6, 1 ],
+        "pontosDesempenho" : 80
+    },
+    ...
+]
+\end{lstlisting}
+\end{mdframed}
+
+\subsection{Estrutura diretórios SimplesRH}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+\begin{lstlisting}[style=Raw]
+    simplesrh
+    |-- src/main/java/br/ufrn
+    |   |-- simplesrh
+    |   |   |-- command
+    |   |   |   |-- CalcularBonusCommand.java
+    |   |   |   |-- CalcularReajusteCommand.java
+    |   |   |   |-- ReajustarCommand.java
+    |   |   |-- dao
+    |   |   |   |-- FuncionarioDAOImpl.java
+    |   |   |   |-- FuncionarioDAO.java
+    |   |   |-- model
+    |   |   |   |-- Funcionario.java
+    |   |   |-- service
+    |   |   |   |-- FuncionarioService.java  // classe escolhida para os testes
+    |   |   |   |-- GestaoService.java       // classe escolhida para os testes
+    |   |   |-- SimplesRH.java
+\end{lstlisting}
+\end{mdframed}
+
+As classes \colorbox{lightgray}{\texttt{\fontsize{12pt}{12pt}\selectfont FuncionarioService.java}} e \colorbox{lightgray}{\texttt{\fontsize{12pt}{12pt}\selectfont GestaoSerivice.java}} foram escolhidas, pois ambas contém as regras de negócio. Como adicionar um funcionário, caso o cargo seja um dos pré-definidos; calcular bônus de acordo com uma pontuação, etc.
+
+\subsection{Injeção do bug}
+
+\definecolor{lightlightgray}{rgb}{1, 1, 1}
+
+Um bug de limite foi injetado na classe \colorbox{lightgray}{\texttt{\fontsize{12pt}{12pt}\selectfont GestaoSerivice.java}}
+
+\begin{mdframed}[backgroundcolor=gray!10]
+\begin{lstlisting}[language=Java]
+public class GestaoService {
+
+    private FuncionarioDAO funcionarioDAO;
+
+    public GestaoService(FuncionarioDAO funcionarioDAO) {
+        this.funcionarioDAO = funcionarioDAO;
+    }
+
+    public double calcularBonusPorDesempenho(Funcionario funcionario) {
+        double salario = funcionario.getSalario();
+        int pontosDesempenho = funcionario.getPontosDesempenho();
+        
+        double bonusPercentual = 0;
+        if (pontosDesempenho >= 0 && pontosDesempenho <= 49) {
+            bonusPercentual = 0.05;
+        } else if (pontosDesempenho >= 50 && pontosDesempenho <= 69) {
+            bonusPercentual = 0.10;
+        } else if (pontosDesempenho >= 70 && pontosDesempenho <= 89) {
+            bonusPercentual = 0.15;
+                           // BUG INJETADO: pontosDesempenho == 100 não é avaliado
+        } else if (pontosDesempenho >= 90 && pontosDesempenho < 100) {
+            bonusPercentual = 0.20;
+        } else {
+            System.out.println("Pontuação de desempenho inválida. A pontuação deve ser entre 0 e 100.");
+        }
+
+        return salario * bonusPercentual;
+    }
+
+    public double calcularReajusteSalarial(Funcionario funcio, double percentual) {
+        ...
+    }
+
+    public void reajustarSalarioPorCargo(String cargo, double percentualReajuste) {
+        ...
+    }
+}
+
+\end{lstlisting}
+\end{mdframed}
+
+\section{Testes Gerados}
+
+\subsection{Randoop}
+
+\subsection{Evosuite}
+
+\end{document}
+

@@ -19,10 +19,57 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
 
+# Arquivos do projeto
 projeto/simplesrh/target
 geradores/evosuite/testes-gerados
 geradores/randoop/testes-gerados
+
+# Arquivos auxiliares gerados durante a compilação
+*.aux        # Arquivo auxiliar
+*.bbl        # Arquivo de bibliografia (gerado pelo BibTeX ou Biber)
+*.blg        # Arquivo de log da bibliografia
+*.log        # Arquivo de log do LaTeX
+*.out        # Arquivo auxiliar (geralmente de tabelas de conteúdos)
+*.toc        # Arquivo de tabela de conteúdo
+*.lof        # Lista de figuras
+*.lot        # Lista de tabelas
+*.fls        # Arquivo de rastreamento do latexmk
+*.fdb_latexmk # Arquivo de dados do latexmk
+
+# Arquivos temporários
+*.dvi        # Saída intermediária gerada por compilações DVI
+*.synctex.gz # Arquivo para sincronização de PDF e código-fonte
+*.pdfsync    # Arquivo de sincronização para visualizadores de PDF antigos
+
+# Saídas de PDF e PS
+*.pdf        # Arquivo de saída PDF
+*.ps         # Arquivo de saída PostScript
+
+# Arquivos gerados por editores LaTeX
+*.nav        # Navegação de apresentações (Beamer)
+*.snm        # Arquivo de snippets (Beamer)
+*.vrb        # Arquivo auxiliar para verbatim
+*.spl        # Arquivo de substituições de palavras
+*.idx        # Índice
+*.ilg        # Log do índice
+*.ind        # Índice final
+*.brf        # Arquivo de referências de notas de rodapé
+
+# Arquivos temporários de compilação
+*.tmp        # Arquivo temporário geral
+*.bak        # Backup de arquivos
+
+# Arquivos específicos de certos editores LaTeX
+*.synctex.gz # Arquivo de sincronização entre editor e visualizador de PDF
+*.acn        # Acrônimos
+*.acr        # Arquivo de acrônimos
+*.alg        # Arquivo de algoritmos
+
+# Arquivos de sistemas específicos
+*~           # Backups criados por alguns sistemas operacionais (Linux)
+Thumbs.db    # Arquivo de cache do Windows
+.DS_Store    # Metadados do macOS
